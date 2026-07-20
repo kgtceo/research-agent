@@ -1,5 +1,12 @@
 # research-agent
 
+### ▶ Live demo: **[agent.kareemghazal.com](https://agent.kareemghazal.com)**
+
+Type a company, hit **Research**, and watch it work — the result shows the briefing
+*and* every tool call the agent made to build it. (First run ~30–60s.)
+
+![research-agent: a sourced interview briefing plus the agent's full tool-call trace](docs/images/screenshot.png)
+
 A **tool-using agent** that researches a company and produces a grounded
 interview-prep briefing. Give it a name; it plans, **searches the web, reads pages,
 and synthesises** — with every fact tied to a source it actually visited, a full
