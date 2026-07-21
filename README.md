@@ -15,10 +15,7 @@ trace of its tool calls, hard guardrails, and evals.
 The interesting part isn't calling an LLM — it's the **agent loop we orchestrate**
 (plan → act → observe → repeat), the tools it's given, and knowing when to *stop*.
 
-> Third in a portfolio built around one idea: **measure LLM systems, don't vibe
-> them.** Alongside [ai-job-copilot](https://github.com/kgtceo/ai-job-copilot)
-> (pipeline + evals) and [rag-doc-qa](https://github.com/kgtceo/rag-doc-qa) (RAG +
-> evals). Pattern coverage: **pipeline → RAG → agent.**
+> Built around one idea: **measure LLM systems, don't vibe them.**
 
 ---
 
@@ -49,7 +46,7 @@ results back**, recording every call in a `trace`. It's not delegated to a black
 
 - **`sources_grounded`** (the star) — every cited `source_url` must be a URL the
   agent *actually encountered* in its trace. Cite a page you never visited and it's
-  caught — no LLM needed. Same anti-fabrication stance as the rest of the portfolio.
+  caught — no LLM needed.
 - **`within_step_budget`**, **`has_essentials`** — guardrail + completeness gates.
 - **LLM judge** — briefing usefulness / specificity / groundedness (1–5).
 
