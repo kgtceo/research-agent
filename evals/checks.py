@@ -58,7 +58,8 @@ def check_within_step_budget(result: ResearchResult) -> CheckResult:
 
 def check_has_essentials(result: ResearchResult) -> CheckResult:
     b = result.briefing
-    ok = bool(b.summary.strip()) and (b.what_they_do or b.likely_interview_questions)
+    # `and`/`or` on lists returns a list, not a bool — coerce so CheckResult.passed stays boolean.
+    ok = bool(b.summary.strip()) and bool(b.what_they_do or b.likely_interview_questions)
     return CheckResult(
         "has_essentials",
         ok,

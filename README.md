@@ -55,6 +55,8 @@ python evals/run_evals.py               # agent + judge over a company set
 python evals/run_evals.py --no-judge    # deterministic gates only
 ```
 
+**Latest run (claude-sonnet-4-6):** 3/3 gate checks pass on both companies (Anthropic, Stripe) — every cited source_url was actually visited in the agent's trace (no fabricated provenance), it stayed within the tool-call budget, and the briefing has its essential sections.
+
 ## Quickstart
 
 ```bash
@@ -69,6 +71,27 @@ Offline test suite (no key, no network — a scripted fake client drives the loo
 ```bash
 pytest -q
 ```
+
+## Web
+
+A FastAPI service and Next.js UI show the briefing *and* the agent's full tool-call trace.
+
+Run it locally in two terminals:
+
+```bash
+# terminal 1 — the API
+pip install -e .
+cp .env.example .env                  # add ANTHROPIC_API_KEY
+python -m uvicorn research_agent.api:app --port 8000
+
+# terminal 2 — the UI
+cd web
+npm install
+echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
+npm run dev                           # open http://localhost:3000
+```
+
+For containerised/production deployment, see [DEPLOY.md](DEPLOY.md).
 
 ## Design decisions (the interview-signal section)
 
