@@ -7,6 +7,10 @@ Type a company, hit **Research**, and watch it work — the result shows the bri
 
 ![research-agent: a sourced interview briefing plus the agent's full tool-call trace](docs/images/screenshot.png)
 
+**How it works** — input → pipeline → output, with the eval harness that measures it:
+
+![research-agent — architecture and eval harness](docs/images/architecture.png)
+
 A **tool-using agent** that researches a company and produces a grounded
 interview-prep briefing. Give it a name; it plans, **searches the web, reads pages,
 and synthesises** — with every fact tied to a source it actually visited, a full
@@ -55,7 +59,7 @@ python evals/run_evals.py               # agent + judge over a company set
 python evals/run_evals.py --no-judge    # deterministic gates only
 ```
 
-**Latest run (claude-sonnet-4-6):** 3/3 gate checks pass on both companies (Anthropic, Stripe) — every cited source_url was actually visited in the agent's trace (no fabricated provenance), it stayed within the tool-call budget, and the briefing has its essential sections.
+**Latest run (claude-sonnet-4-6):** 3/3 gate checks pass on both companies (Anthropic, Stripe) — every cited source_url was actually visited in the agent's trace (no fabricated provenance), it stayed within the tool-call budget, and the briefing has its essential sections. The actual generated report is committed at [`evals/sample-report.json`](evals/sample-report.json) — verifiable, not just asserted (`run_evals.py` writes a fresh one to `evals/reports/` each run).
 
 ## Quickstart
 
